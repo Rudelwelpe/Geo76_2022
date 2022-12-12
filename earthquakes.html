@@ -17,6 +17,7 @@
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+ <script src="earthquake_points.js"></script>
   <!-- styles for elements html and body: fullscreen  -->
  <style>
   html, body {
@@ -61,9 +62,14 @@ var basemaps = {
  "Open Street Map INT": osmint_basemap
 };
  
-// Layer control
+  // Layer control
 var legend = L.control.layers(basemaps, null, {collapsed: false, position: "topleft"}).addTo(mymap);
-  
+ 
+  // Scale 
+var L.control.scale({maxWidth: 150, metric: true, imperial: true, position: "bottomright"}).addTo(mymap);
+
+  // Overlay
+var overlay_eq_points = L.geoJSON(eq_points).addTo(mymap); 
  </script>
  
 </body>
